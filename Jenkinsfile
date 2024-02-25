@@ -1,10 +1,14 @@
 pipeline {
-    agent { docker { image 'python:3.12.1-alpine3.19' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'python --version'
-            }
+    stage('Run Playbook') {
+      environment {
+        ANSIBLE_MY_PARAM="new_param"
+      }
+      steps {
+        script {
+            config = readFile "config.yaml"
+            newconfig = a.replaceAll("{v1}","${ANSIBLE_MY_PARAM}")
+            writeFile file: "config.yaml", text: "${newconfig}"
         }
     }
 }
+
