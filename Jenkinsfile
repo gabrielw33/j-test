@@ -1,9 +1,4 @@
-
-config = readFile "config.yaml"
-newconfig = config.replaceAll("v1","new")
-writeFile file: "config.yaml", text: "${newconfig}"
-config2 = readFile "config.yaml"
-echo config2
+@Library('test-shared-lib')_
 
 pipeline {
     agent any
@@ -11,7 +6,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                script{
+                    demo()
+                }
             }
         }
         stage('Test') {
