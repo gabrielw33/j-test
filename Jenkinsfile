@@ -3,9 +3,11 @@ pipeline {
     stages {
         stage("conf") {
           steps {
+              script {
                 config = readFile "config.yaml"
                 newconfig = a.replaceAll("{v1}","new")
                 writeFile file: "config.yaml", text: "${newconfig}"
+              }
           }
        }
    }
