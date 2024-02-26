@@ -1,2 +1,2 @@
-con1 : '{v1}'
-con2 : ${v2}
+con1 : v1
+con2 : a
