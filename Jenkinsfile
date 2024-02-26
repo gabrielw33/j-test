@@ -13,6 +13,7 @@ pipeline {
                 config = readFile "config.yaml"
                 echo config
               }
+            }
           }
        }
    }
