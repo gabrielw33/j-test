@@ -8,6 +8,11 @@ pipeline {
                 newconfig = config.replaceAll("v1","new")
                 writeFile file: "config.yaml", text: "${newconfig}"
               }
+             steps {
+              script {
+                config = readFile "config.yaml"
+                echo config
+              }
           }
        }
    }
