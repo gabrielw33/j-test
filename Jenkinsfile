@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('conf') {
+        stage("conf") {
           steps {
                 config = readFile "config.yaml"
                 newconfig = a.replaceAll("{v1}","new")
