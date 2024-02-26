@@ -9,6 +9,7 @@ pipeline {
             newconfig = a.replaceAll("{v1}","${ANSIBLE_MY_PARAM}")
             writeFile file: "config.yaml", text: "${newconfig}"
         }
-    }
+      }
+   }
 }
 
