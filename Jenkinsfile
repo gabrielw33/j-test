@@ -11,7 +11,7 @@ pipeline {
              steps {
               script {
                 config = readFile "config.yaml"
-                sh "echo config"
+                sh "echo ${config}"
               }
             }
           }
