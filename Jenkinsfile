@@ -1,5 +1,6 @@
 pipeline {
-    stage('Run Playbook') {
+    stages {
+    stage('conf') {
       environment {
         ANSIBLE_MY_PARAM="new_param"
       }
@@ -11,5 +12,5 @@ pipeline {
         }
       }
    }
+   }
 }
-
