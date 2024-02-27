@@ -1,4 +1,4 @@
-dnode{
+node{
     script{
 
     def configFile = "conf/param.yaml"
