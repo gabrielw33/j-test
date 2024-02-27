@@ -1,6 +1,6 @@
 @Library('test-shared-lib')_
 node{script{
-    echo env.atb
+
 
     echo "fs"
     config = readFile "config.yaml"
