@@ -1,17 +1,24 @@
-def configFile = "conf/param.yaml"
+node{
+    script{
 
-// Read the YAML file
-def config = readFile configFile
+    def configFile = "conf/param.yaml"
+    
+    // Read the YAML file
+    def config = readFile configFile
+    
+    // Modify the content
+    def newConfig = config.replaceAll("dd", "fase")
+    
+    // Write the modified content back to the file
+    writeFile file: configFile, text: newConfig
+    
+    // Echo the modified content
+    echo "Modified configuration:"
+    echo newConfig
+    }
+    
+}
 
-// Modify the content
-def newConfig = config.replaceAll("dd", "fase")
-
-// Write the modified content back to the file
-writeFile file: configFile, text: newConfig
-
-// Echo the modified content
-echo "Modified configuration:"
-echo newConfig
 
 pipeline {
     agent any
