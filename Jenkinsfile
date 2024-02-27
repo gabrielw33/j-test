@@ -1,6 +1,6 @@
 node{
     script{
-
+    def bn = "dup" 
     def configFile = "conf/param.yaml"
     
     // Read the YAML file
