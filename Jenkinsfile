@@ -3,12 +3,12 @@ node{script{
 
 
     echo "fs"
-    config = readFile "config.yaml"
-    newconfig = config.replaceAll("v3","fase")
+    config = readFile "conf/param.yaml"
+    newconfig = config.replaceAll("dd","fase")
     writeFile file: "config.yaml", text: "${newconfig}"
 
 
-    config2 = readFile "config.yaml"
+    config2 = readFile "conf/param.yaml"
     echo config2
 }}
 
