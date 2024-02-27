@@ -7,4 +7,4 @@ node{script{
     echo config2
 }}
 
-demo()
+demo("config.yaml")
