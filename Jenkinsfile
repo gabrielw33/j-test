@@ -14,7 +14,6 @@ node{
     
     // Echo the modified content
     echo "Modified configuration:"
-    echo config
     }
     
 }
