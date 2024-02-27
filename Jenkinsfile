@@ -1,19 +1,29 @@
+def configFile = "conf/param.yaml"
+
+beforeAgent {
+    // Read the YAML file
+    def config = readFile configFile
+    
+    // Modify the content
+    def newConfig = config.replaceAll("dd", "fase")
+    
+    // Write the modified content back to the file
+    writeFile file: configFile, text: newConfig
+    
+    // Echo the modified content
+    echo "Modified configuration:"
+    echo newConfig
+}
+
 pipeline {
     agent any
     stages {
         stage("conf") {
-          steps {
-              script {
-                
-                    config = readFile "conf/param.yaml"
-                    newconfig = config.replaceAll("dd","fase")
-                    writeFile file: "conf/param.yaml", text: "${newconfig}"
-                
-                
-                    config2 = readFile "conf/param.yaml"
-                    echo config2
-              }
-          }
-       }
-   }
+            steps {
+                script {
+                    echo aa
+                }
+            }
+        }
+    }
 }
