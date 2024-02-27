@@ -4,14 +4,14 @@ node{script{
     if (env.atb == true){
         echo "tr"
         config = readFile "config.yaml"
-        newconfig = config.replaceAll("v1","new")
+        newconfig = config.replaceAll("v1","dd")
         writeFile file: "config.yaml", text: "${newconfig}"
-    } 
+    }
     else
     {
         echo "fs"
         config = readFile "config.yaml"
-        newconfig = config.replaceAll("v1","none")
+        newconfig = config.replaceAll("v1","fase")
         writeFile file: "config.yaml", text: "${newconfig}"
     }
 
