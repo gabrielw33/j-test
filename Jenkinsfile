@@ -1,20 +1,20 @@
-node{
+dnode{
     script{
 
     def configFile = "conf/param.yaml"
     
     // Read the YAML file
-    def config = readFile configFile
+    def config = readYaml file: configFile
     
     // Modify the content
-    def newConfig = config.replaceAll("dd", "lul")
-    
+    config.c
+    echo config
     // Write the modified content back to the file
-    writeFile file: configFile, text: newConfig
+    writeYaml file: configFile, data: config, overwrite: true
     
     // Echo the modified content
     echo "Modified configuration:"
-    echo newConfig
+    echo config
     }
     
 }
