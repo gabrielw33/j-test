@@ -1,4 +1,3 @@
-@Library('test-shared-lib')_
 node{script{
 
 
