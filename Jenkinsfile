@@ -7,7 +7,7 @@ node{
     def config = readFile configFile
     
     // Modify the content
-    def newConfig = config.replaceAll("dd", "fase")
+    def newConfig = config.replaceAll("dd", "lul")
     
     // Write the modified content back to the file
     writeFile file: configFile, text: newConfig
