@@ -7,7 +7,7 @@ node{
     def config = readYaml file: configFile
     
     // Modify the content
-    config.a = config.a + '-${bn}' 
+    config.a = config.a + "-${bn}" 
     echo config.a
     // Write the modified content back to the file
     writeYaml file: configFile, data: config, overwrite: true
@@ -26,9 +26,12 @@ pipeline {
             steps {
                 script {
                     echo "Using modified configuration in the pipeline:"
-                    
-                    // Now you can use the modifiedConfig as needed
-                    // do_something(modifiedConfig)
+                    def configFile = "conf/param.yaml"
+    
+                    // Read the YAML file
+                    def config = readYaml file: configFile
+                    echo config.a
+    
                 }
             }
         }
