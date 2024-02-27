@@ -18,22 +18,17 @@ node{
     
 }
 
-
-pipeline {
-    agent any
-    stages {
-        stage("conf") {
-            steps {
-                script {
-                    echo "Using modified configuration in the pipeline:"
+node{
+    script{
+               echo "Using modified configuration in the pipeline:"
                     def configFile = "conf/param.yaml"
     
                     // Read the YAML file
                     def config = readYaml file: configFile
                     echo config.a
     
-                }
-            }
-        }
     }
+    
 }
+
+
