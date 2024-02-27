@@ -11,5 +11,3 @@ node{script{
     config2 = readFile "conf/param.yaml"
     echo config2
 }}
-
-demo()
