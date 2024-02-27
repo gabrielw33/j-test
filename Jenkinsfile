@@ -7,7 +7,7 @@ node{
     def config = readYaml file: configFile
     
     // Modify the content
-    config.c
+    config.c = '${bn}'
     echo config
     // Write the modified content back to the file
     writeYaml file: configFile, data: config, overwrite: true
