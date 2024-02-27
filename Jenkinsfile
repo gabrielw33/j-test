@@ -1,5 +1,6 @@
 @Library('test-shared-lib')_
 node{script{
+    echo env.atb
     if (env.atb == true){
         config = readFile "config.yaml"
         newconfig = config.replaceAll("v1","new")
