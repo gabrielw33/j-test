@@ -1,3 +1,4 @@
-a: ${bn}
-b: ${bn}
-c: ${bn}
+dastination:
+  table_id: test_tabel-{branch_name}_
+  dataset_id: ds_test
+  project_id: {pipelines}
