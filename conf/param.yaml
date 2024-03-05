@@ -1,4 +1,4 @@
 dastination:
-  table_id: test_tabel-{branch_name}_
+  table_id: test_tabel{branch_name}_
   dataset_id: ds_test
   project_id: {pipelines}
