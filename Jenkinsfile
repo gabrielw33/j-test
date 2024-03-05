@@ -1,34 +1,34 @@
-node{
-    script{
-    def bn = "dup" 
-    def configFile = "conf/param.yaml"
-    
-    // Read the YAML file
-    def config = readYaml file: configFile
-    
-    // Modify the content
-    config.a = config.a + "-${bn}" 
-    echo config.a
-    // Write the modified content back to the file
-    writeYaml file: configFile, data: config, overwrite: true
-    
-    // Echo the modified content
-    echo "Modified configuration:"
+pipeline {
+    agent any
+
+    stages {
+        stage('Read YAML') {
+            steps {
+                script {
+                    def bs = "jej"
+                    def yamlContent = readYaml(file: 'conf/param.yaml')
+                    def filledYaml = replaceParams(yamlContent)
+                    echo "${filledYaml}"
+                }
+            }
+        }
     }
-    
 }
 
-node{
-    script{
-               echo "Using modified configuration in the pipeline:"
-                    def configFile = "conf/param.yaml"
-    
-                    // Read the YAML file
-                    def config = readYaml file: configFile
-                    echo config.a
-    
+def replaceParams(yamlContent) {
+    yamlContent.collectEntries { key, value ->
+        [(key): replaceParamsRecursively(value)]
     }
-    
 }
 
-
+def replaceParamsRecursively(value) {
+    if (value instanceof Map) {
+        return replaceParams(value)
+    } else if (value instanceof List) {
+        return value.collect { replaceParamsRecursively(it) }
+    } else if (value instanceof String) {
+        return env.expand(value)
+    } else {
+        return value
+    }
+}
