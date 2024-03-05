@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        BN = 'wartość_zmiennej'
-    }
 
     stages {
         stage('Replace Parameters') {
