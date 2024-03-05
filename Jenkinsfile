@@ -13,10 +13,10 @@ pipeline {
 
                     if (branch_name == "master"){
                         yamlContent.dastination.table_id = yamlContent.dastination.table_id.replace("{branch_name}", "")
-                        yamlContent.dastination.project_id = prod_env_bq       
+                        yamlContent.dastination.project_id = yamlContent.dastination.project_id.replace("{pipelines}", "${prod_env_bq}") 
                     }else{
                         yamlContent.dastination.table_id = yamlContent.dastination.table_id.replace("{branch_name}", "-${branch_name}")
-                        yamlContent.dastination.project_id = test_env_bq
+                        yamlContent.dastination.project_id = yamlContent.dastination.project_id.replace("{pipelines}", "${test_env_bq}") 
                     }
 
                     echo "${yamlContent}"
