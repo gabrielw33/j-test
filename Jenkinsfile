@@ -9,8 +9,8 @@ pipeline {
         stage('Replace Parameters') {
             steps {
                 script {
-                    def yamlContent = "[a:\${env.BN}, b:\${env.BN}, c:\${env.BN}]"
-                    def filledYaml = evaluateTemplate(yamlContent)
+                    def yamlContent = "[a:\${BN}, b:\${BN}, c:\${BN}]"
+                    def filledYaml = replaceParameters(yamlContent)
                     echo "${filledYaml}"
                 }
             }
@@ -18,14 +18,9 @@ pipeline {
     }
 }
 
-@NonCPS
-def evaluateTemplate(template) {
-    // Parse template with Groovy's SimpleTemplateEngine
+def replaceParameters(template) {
     def engine = new groovy.text.SimpleTemplateEngine()
-    def binding = new groovy.util.GroovyScriptEngine(this.class.classLoader).with {
-        createBindings([env: env])
-    }
-    def compiledTemplate = engine.createTemplate(template).make(binding)
-    // Return evaluated template
-    return compiledTemplate.toString()
+    def binding = [BN: env.BN]
+    def interpolatedTemplate = engine.createTemplate(template).make(binding)
+    return interpolatedTemplate.toString()
 }
