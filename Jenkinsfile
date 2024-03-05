@@ -10,8 +10,7 @@ pipeline {
             steps {
                 script {
                     def yamlContent =  Eval.me("[a:\${BN}, b:\${BN}, c:\${BN}]")
-                    def filledYaml = replaceParameters(yamlContent)
-                    echo "${filledYaml}"
+                    echo "${yamlContent}"
                 }
             }
         }
