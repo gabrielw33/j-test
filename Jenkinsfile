@@ -18,7 +18,7 @@ pipeline {
                     }else{
                         yamlContent.dastination.table_id = yamlContent.dastination.table_id.replace("{branch_name}", "-${branch_name}")
                         echo "${test_env_bq}"
-                        yamlContent.dastination.project_id = yamlContent.dastination.project_id.replace("{pipelines}", "${test_env_bq}")
+                        yamlContent.dastination.project_id = yamlContent.dastination.project_id.replace("{pipelines}", "8${test_env_bq}")
                     }
 
                     echo "${yamlContent}"
