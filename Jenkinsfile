@@ -6,7 +6,7 @@ pipeline {
         stage('Replace Parameters') {
             steps {                                    
                 script {
-                    def allowNotParams = False
+                    def allowNotParams = false
                     
                     def branch_name = "develop" 
                     def test_env_bq = "mlwbrisk"
