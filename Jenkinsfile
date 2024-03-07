@@ -6,7 +6,7 @@ pipeline {
         stage('Replace Parameters') {
             steps {                                    
                 script {
-                    def branch_name = "develpo" 
+                    def branch_name = "develop" 
                     def test_env_bq = "mlwbrisk"
                     def prod_env_bq = "pipelines"
                     
@@ -17,7 +17,7 @@ pipeline {
                         paramFileContent = paramFileContent.replace("{branch_name}", "")
                         paramFileContent = paramFileContent.replace("{pipelines}", "${prod_env_bq}") 
                     }else{
-                        paramFileContent = paramFileContent.replace("{branch_name}", "${branch_name}")
+                        paramFileContent = paramFileContent.replace("{branch_name}", "-${branch_name}")
                         paramFileContent = paramFileContent.replace("{pipelines}", "${test_env_bq}")
                     }
 
