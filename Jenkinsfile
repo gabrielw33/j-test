@@ -19,7 +19,7 @@ pipeline {
 
                     def found = paramList.any { searchString -> paramFileContent.contains(searchString) }
                     echo "${found}"
-                    if (!found and !allowNotParams){
+                    if (!found && !allowNotParams){
                         error("Error encountered: Something went wrong!")
                     } 
                         
