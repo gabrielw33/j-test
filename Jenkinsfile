@@ -6,6 +6,8 @@ pipeline {
         stage('Replace Parameters') {
             steps {                                    
                 script {
+                    def allowNotParams = False
+                    
                     def branch_name = "develop" 
                     def test_env_bq = "mlwbrisk"
                     def prod_env_bq = "pipelines"
@@ -17,7 +19,9 @@ pipeline {
 
                     def found = paramList.any { searchString -> paramFileContent.contains(searchString) }
                     echo "${found}"
-                    //if error("Error encountered: Something went wrong!")
+                    if (!found and !allowNotParams){
+                        error("Error encountered: Something went wrong!")
+                    } 
                         
                     if (branch_name == "master"){
                         paramFileContent = paramFileContent.replace("{branch_name}", "")
