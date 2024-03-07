@@ -13,7 +13,7 @@ pipeline {
                     def prod_env_bq = "pipelines"
                     
                     def paramList = [prod_env_bq, test_env_bq, branch_name]
-                    def paramFileContent = readFile(file: 'config.yaml')
+                    def paramFileContent = readFile(file: 'conf/param.yaml')
      
                     //paramFileContent.indexOf(substring)
 
